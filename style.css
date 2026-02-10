@@ -1,0 +1,199 @@
+/* ====== Base & Reset ====== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* ====== Scrollbar ====== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF6F1;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4A882;
+  border-radius: 3px;
+}
+
+/* ====== Header States ====== */
+#header {
+  background: transparent;
+}
+#header.scrolled {
+  background: rgba(45, 45, 45, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+}
+#header.scrolled .nav-link,
+#header.scrolled a:first-child {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ====== Status Badge ====== */
+.status-badge {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.status-badge.open .status-badge-dot {
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+}
+.status-badge.closed .status-badge-dot {
+  background: #f87171;
+  box-shadow: 0 0 8px rgba(248, 113, 113, 0.5);
+}
+#header.scrolled .status-badge {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ====== Service Cards ====== */
+.service-card {
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ====== Testimonial Cards ====== */
+.testimonial-card {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(45, 45, 45, 0.08);
+}
+
+/* ====== Hero Animations ====== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+.animate-fade-in-up-delay {
+  animation: fadeInUp 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
+.animate-fade-in-up-delay-2 {
+  animation: fadeInUp 1s ease-out 0.9s forwards;
+  opacity: 0;
+}
+
+/* ====== Scroll Reveal ====== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ====== Admin Dashboard Styles ====== */
+.admin-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.admin-header {
+  text-align: center;
+  padding: 3rem 0 2rem;
+}
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: #f8f8f8;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+.toggle-switch {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  cursor: pointer;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #f87171;
+  border-radius: 32px;
+  transition: background 0.4s ease;
+}
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  top: 4px;
+  left: 4px;
+  transition: transform 0.4s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.toggle-switch input:checked + .toggle-slider {
+  background: #4ade80;
+}
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(28px);
+}
+.admin-status-display {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.4s ease;
+}
+.admin-status-display.open {
+  background: rgba(74, 222, 128, 0.1);
+  color: #166534;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+.admin-status-display.closed {
+  background: rgba(248, 113, 113, 0.1);
+  color: #991b1b;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 1.5rem 1rem;
+    border-top: none;
+    border-left: 2px solid rgba(143, 163, 173, 0.3);
+    padding-left: 1.5rem;
+  }
+}

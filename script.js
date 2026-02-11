@@ -9,10 +9,10 @@ if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
 
 // ====== Default Settings ======
 const DEFAULT_SETTINGS = {
-  phone: '(123) 456-7890',
-  email: 'hello@reallygreatsite.com',
-  instagram: '@paribeautyparlour',
-  location: '123 Beauty Lane, City, State 12345',
+  phone: '7069437249',
+  email: 'radhika@paribeauty.com',
+  instagram: 'pari_beauty_parlour_8',
+  location: 'Amreli Road, Murlidhar Society, Bagasara',
   status: 'open'
 };
 
@@ -72,7 +72,7 @@ function updateFooterInfo(settings) {
 
   const instaEl = document.getElementById('footerInstagram');
   if (instaEl) {
-    const handle = settings.instagram.startsWith('@') ? settings.instagram : '@' + settings.instagram;
+    const handle = settings.instagram;
     instaEl.textContent = handle;
     instaEl.href = 'https://instagram.com/' + handle.replace('@', '');
   }

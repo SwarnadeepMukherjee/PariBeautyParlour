@@ -101,7 +101,12 @@
             <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
                 <div>
                     <h1 class="font-serif text-xl text-charcoal">Dashboard</h1>
-                    <p class="text-charcoal/40 text-xs mt-0.5">Manage salon settings</p>
+                    <div class="flex gap-4 mt-2">
+                        <button onclick="switchTab('settings')" id="tab-settings"
+                            class="text-xs font-bold uppercase tracking-wider text-brown-500 border-b-2 border-brown-500 pb-1 transition-colors">Settings</button>
+                        <button onclick="switchTab('applicants')" id="tab-applicants"
+                            class="text-xs font-medium uppercase tracking-wider text-charcoal/40 hover:text-charcoal border-b-2 border-transparent pb-1 transition-colors">Applicants</button>
+                    </div>
                 </div>
                 <div class="flex items-center gap-3">
                     <a href="index.html"
@@ -126,7 +131,8 @@
             </div>
         </div>
 
-        <div class="max-w-3xl mx-auto px-6 py-8">
+        <!-- Settings View -->
+        <div id="view-settings" class="max-w-3xl mx-auto px-6 py-8">
 
             <!-- Status Toggle Card -->
             <div class="bg-white rounded-xl p-6 mb-6 border border-charcoal/5">
@@ -186,7 +192,7 @@
                         </label>
                         <input type="email" id="settingEmail"
                             class="w-full px-4 py-3 bg-cream/50 border border-charcoal/10 rounded-lg text-sm focus:outline-none focus:border-brown-500 focus:ring-1 focus:ring-brown-500 transition-all"
-                            placeholder="hello@example.com" />
+                            placeholder="hello@reallygreatsite.com" />
                     </div>
 
                     <!-- Instagram -->
@@ -194,8 +200,9 @@
                         <label for="settingInstagram"
                             class="block text-xs uppercase tracking-wider text-charcoal/60 font-medium mb-2">
                             <span class="inline-flex items-center gap-1.5">
-                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                                 </svg>
                                 Instagram Handle
@@ -243,12 +250,57 @@
                 </form>
             </div>
 
-            <!-- Info -->
-            <p class="text-center text-charcoal/30 text-xs py-4">&copy; 2026 Pari Beauty Parlour — Admin Dashboard</p>
+            <p class="text-center text-charcoal/30 text-xs py-4">&copy; 2026 PARI BEAUTY PARLOUR — Admin Dashboard</p>
         </div>
+
+        <!-- Applicants View -->
+        <div id="view-applicants" class="hidden w-full h-[calc(100vh-73px)]">
+            <div class="bg-white h-full flex flex-col">
+                <div class="px-6 py-4 border-b border-charcoal/5 bg-gray-50 flex justify-between items-center shrink-0">
+                    <div>
+                        <h2 class="font-serif text-lg text-charcoal">Appointment Requests</h2>
+                    </div>
+                    <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxkhwYwBOHCOcnF_fuYkB09Dpku8bdEGqXuGURgp4Tsb1oqXOfTW7fhaBLDCkBUKPBvFIoO_vp4VFD/pubhtml?gid=168064396"
+                        target="_blank"
+                        class="text-xs text-brown-500 hover:text-brown-700 font-medium flex items-center gap-1">
+                        Open Sheet
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="flex-1">
+                    <iframe
+                        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxkhwYwBOHCOcnF_fuYkB09Dpku8bdEGqXuGURgp4Tsb1oqXOfTW7fhaBLDCkBUKPBvFIoO_vp4VFD/pubhtml?gid=168064396&single=true&widget=true&headers=false"
+                        class="w-full h-full border-0"></iframe>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
+    <script>
+        function switchTab(tab) {
+            const settingsBtn = document.getElementById('tab-settings');
+            const applicantsBtn = document.getElementById('tab-applicants');
+            const settingsView = document.getElementById('view-settings');
+            const applicantsView = document.getElementById('view-applicants');
+
+            if (tab === 'settings') {
+                settingsBtn.className = "text-xs font-bold uppercase tracking-wider text-brown-500 border-b-2 border-brown-500 pb-1 transition-colors";
+                applicantsBtn.className = "text-xs font-medium uppercase tracking-wider text-charcoal/40 hover:text-charcoal border-b-2 border-transparent pb-1 transition-colors";
+                settingsView.classList.remove('hidden');
+                applicantsView.classList.add('hidden');
+            } else {
+                settingsBtn.className = "text-xs font-medium uppercase tracking-wider text-charcoal/40 hover:text-charcoal border-b-2 border-transparent pb-1 transition-colors";
+                applicantsBtn.className = "text-xs font-bold uppercase tracking-wider text-brown-500 border-b-2 border-brown-500 pb-1 transition-colors";
+                settingsView.classList.add('hidden');
+                applicantsView.classList.remove('hidden');
+            }
+        }
+    </script>
 </body>
 
 </html>
